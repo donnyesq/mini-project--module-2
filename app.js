@@ -4,14 +4,34 @@ const confirmPassword = document.querySelector("#confirm");
 const submitButton = document.querySelector("#submit");
 const clear = document.querySelector("#clear");
 
+const randomWords =
+  "water way we weapon wear week weight well west western what whatever when where whether which white who whole whom whose why wide wife will win wind wish within without woman wonder word work worker world worry would write writer wrong yard yeah year yes yet you young your yourself";
+
+const randomWordsArr = randomWords.split(" ");
+
 submitButton.addEventListener("click", function () {
   // CHECK PASSWORD
   let str = password.value;
   const error = document.querySelector("#error");
 
   if (str.length < 10) {
-    error.innerText =
-      "Your password is too short! Please provide a password that is at least 10 characters long.";
+    let word1 = "";
+    let word2 = "";
+    let word3 = "";
+    let word4 = "";
+    let word5 = "";
+
+    const generatePassword = (arr) => {
+      word1 += arr[Math.round(Math.random() * 30)];
+      word2 += arr[Math.round(Math.random() * 30)];
+      word3 += arr[Math.round(Math.random() * 30)];
+      word4 += arr[Math.round(Math.random() * 30)];
+      word5 += arr[Math.round(Math.random() * 30)];
+    };
+
+    generatePassword(randomWordsArr);
+
+    error.innerText = `Your password is too short! Try something like ${word1}-${word2}-${word3}-${word4}-${word5}.`;
     error.style.display = "flex";
     password.style.border = "2px solid red";
   } else if (password.value !== confirmPassword.value) {
