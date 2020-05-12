@@ -31,9 +31,9 @@ const clearErrors = () => {
 };
 
 form.addEventListener("submit", function (event) {
-  event.preventDefault();
   clearErrors();
   window.alert("Success!");
+  event.preventDefault();
 });
 
 clear.addEventListener("click", function () {
